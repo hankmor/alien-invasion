@@ -29,7 +29,9 @@ class AlienInvasion:
         # 循环渲染屏幕，每一帧都会在循环中渲染到界面
         while True:
             # 监听键盘和鼠标事件
-            gf.check_events()
+            gf.check_events(self.ship)
+            # 检测飞船移动
+            self.ship.moving()
             # 绘制屏幕
             gf.draw(self.settings, self.screen, self.ship)
 
