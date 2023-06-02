@@ -1,7 +1,9 @@
 import sys
 import pygame
-
+import game_func as gf
+from game_func import draw
 from settings import Settings
+from ship import Ship
 
 
 class AlienInvasion:
@@ -18,6 +20,8 @@ class AlienInvasion:
         self.screen = pygame.display.set_mode((self.settings.width, self.settings.height))
         # 显示内容
         pygame.display.set_caption(self.settings.caption + " - " + self.settings.version)
+        # 创建飞船实例
+        self.ship = Ship(self.screen)
 
     def start(self):
         """启动游戏"""
@@ -25,14 +29,9 @@ class AlienInvasion:
         # 循环渲染屏幕，每一帧都会在循环中渲染到界面
         while True:
             # 监听键盘和鼠标事件
-            for evt in pygame.event.get():
-                if evt.type == pygame.QUIT:
-                    # 退出游戏
-                    sys.exit()
-            # 设置背景色
-            self.screen.fill(self.settings.bg_color)
-            # 渲染游戏界面
-            pygame.display.flip()
+            gf.check_events()
+            # 绘制屏幕
+            gf.draw(self.settings, self.screen, self.ship)
 
 
 if __name__ == '__main__':
