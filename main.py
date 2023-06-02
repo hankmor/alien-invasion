@@ -21,7 +21,7 @@ class AlienInvasion:
         # 显示内容
         pygame.display.set_caption(self.settings.caption + " - " + self.settings.version)
         # 创建飞船实例
-        self.ship = Ship(self.screen)
+        self.ship = Ship(self.settings, self.screen)
 
     def start(self):
         """启动游戏"""

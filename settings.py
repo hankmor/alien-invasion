@@ -5,4 +5,4 @@ class Settings:
         self.width = 1200  # 屏幕宽度
         self.height = 800  # 屏幕高度
         self.bg_color = (230, 230, 230)  # 屏幕背景色
-        self.speed = 1.5  # 飞船的移动速度
+        self.speed = 2.5  # 飞船的移动速度
