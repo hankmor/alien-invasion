@@ -40,6 +40,5 @@ class Ship:
             self.center -= self.settings.speed
         elif self.moving_right and self.ship_rect.right < self.screen_rect.right:
             self.center += self.settings.speed
-        # print(f'center: {self.center}')
         self.ship_rect.centerx = self.center
         self.ship_rect.bottom = self.bottom
