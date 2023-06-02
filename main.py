@@ -1,7 +1,6 @@
-import sys
 import pygame
+from pygame.sprite import Group
 import game_func as gf
-from game_func import draw
 from settings import Settings
 from ship import Ship
 
@@ -22,6 +21,8 @@ class AlienInvasion:
         pygame.display.set_caption(self.settings.caption + " - " + self.settings.version)
         # 创建飞船实例
         self.ship = Ship(self.settings, self.screen)
+        # 创建子弹编组，可以同时操作组内的元素
+        self.bullets = Group()
 
     def start(self):
         """启动游戏"""
@@ -29,11 +30,13 @@ class AlienInvasion:
         # 循环渲染屏幕，每一帧都会在循环中渲染到界面
         while True:
             # 监听键盘和鼠标事件
-            gf.check_events(self.ship)
+            gf.check_events(self.settings, self.screen, self.ship, self.bullets)
             # 检测飞船移动
             self.ship.moving()
+            # 更新子弹
+            gf.update_bullet(self.bullets)
             # 绘制屏幕
-            gf.draw(self.settings, self.screen, self.ship)
+            gf.draw(self.settings, self.screen, self.ship, self.bullets)
 
 
 if __name__ == '__main__':
